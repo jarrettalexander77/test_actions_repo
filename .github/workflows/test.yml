@@ -8,6 +8,9 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
+    id: test
+    outputs:
+      version: 1
     steps:
       - uses: actions/checkout@v1
       - name: Run a script
@@ -24,4 +27,4 @@ jobs:
       - name: run another script
         run: |
           echo $TEST_VALUE
-          echo test 2
+          echo steps.test.outputs.version
