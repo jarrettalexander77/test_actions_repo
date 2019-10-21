@@ -22,5 +22,5 @@ jobs:
         run: echo Hello, world!
       - name: run another script
         run: |
-          echo $env.TEST_VALUE
+          echo $TEST_VALUE
           echo test 2
