@@ -11,3 +11,13 @@ jobs:
         run: |
           npm install
           npm test
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run a script
+        run: echo Hello, world!
+      - name: run another script
+        run: |
+          echo test 1
+          echo test 2
