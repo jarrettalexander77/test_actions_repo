@@ -2,6 +2,9 @@ name: Testing
 
 on: [push]
 
+env:
+  TEST_VALUE: testing
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -19,5 +22,5 @@ jobs:
         run: echo Hello, world!
       - name: run another script
         run: |
-          echo test 1
+          echo $env.TEST_VALUE
           echo test 2
