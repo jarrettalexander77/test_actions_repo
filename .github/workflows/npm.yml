@@ -21,7 +21,25 @@ jobs:
       version: 1
     steps:
       - uses: actions/checkout@v1
-      - name: Run a script
-        run: |
-          npm install
-          npm test
+
+      # requires checkout
+      # - uses: READ_PACKAGE
+      
+      - run: npm install
+      - run: npm test
+      - run: cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'
+
+      # - uses: DISPLAY_NAME_CHECK
+      # - uses: VERSION_CHECK
+      # - uses: OPEN_SOURCE_DEPENDENCY_CHECK
+      # - uses: NPM_TEST
+      # - uses: NPM_LINT
+      # - uses: STATIC_SECURITY_CHECK
+
+      # - uses: POST_TO_PR
+
+      # - uses: DEPLOY_TO_ARTIFACTORY
+
+      # - uses: POSTING_TO_SLACK
+
+
