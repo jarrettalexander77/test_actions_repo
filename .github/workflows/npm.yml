@@ -1,6 +1,7 @@
 name: Testing
 
-on: [push]
+# Remember to detect on prerelease which is a subtype
+on: [push, pull_request, release]
 
 # These are going to be our jenkins.yml file
 env:
