@@ -1,0 +1,26 @@
+name: Testing
+
+on: [push]
+
+# These are going to be our jenkins.yml file
+env:
+  slack_channel:
+  checkmarx_fail_severity:
+  checkmarx_warn_severity:
+  snyk_fail_severity:
+  checkmarx_all_pull_requests:
+  app_node_all:
+  before_deploy:
+  run_front_end_test:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    outputs:
+      version: 1
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run a script
+        run: |
+          npm install
+          npm test
