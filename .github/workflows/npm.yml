@@ -18,19 +18,26 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-
+      - name: checkout
+        uses: actions/checkout@v1
+        id: checkout
+      - name: readPackage
+        needs: checkout
+        id: readPackage
+        run: cat package.json | grep version | head -1 | awk -F ':' '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'
       # requires checkout
       # - uses: READ_PACKAGE
+      # - run: cat package.json | grep version | head -1 | awk -F ':' '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'
       
-      - run: npm install
-      - run: npm test
-      - run: cat package.json | grep version | head -1 | awk -F ':' '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'
+      # NPM Install Stage
+      # - run: npm install
+      
+      
 
       # - uses: DISPLAY_NAME_CHECK
       # - uses: VERSION_CHECK
       # - uses: OPEN_SOURCE_DEPENDENCY_CHECK
-      # - uses: NPM_TEST
+      # - run: npm test
       # - uses: NPM_LINT
       # - uses: STATIC_SECURITY_CHECK
 
