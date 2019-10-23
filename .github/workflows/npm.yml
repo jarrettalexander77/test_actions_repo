@@ -22,9 +22,10 @@ jobs:
         uses: actions/checkout@v1
         id: checkout
       - name: readPackage
-        needs: checkout
         id: readPackage
-        run: cat package.json | grep version | head -1 | awk -F ':' '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'
+        run: "##[set-output name=version;]$(cat package.json | grep version | head -1 | awk -F ':' '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
+      - name: printVersion
+        run: echo $steps.readPackage.outputs.version
       # requires checkout
       # - uses: READ_PACKAGE
       # - run: cat package.json | grep version | head -1 | awk -F ':' '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'
