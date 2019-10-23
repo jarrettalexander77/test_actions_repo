@@ -23,7 +23,7 @@ jobs:
         id: checkout
       - name: readPackage
         id: readPackage
-        run: "##[set-output name=version;]$(cat package.json | grep version | head -1 | awk -F ':' '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
+        run: cat package.json | grep version | head -1 | awk -F ':' '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'
       - name: printVersion
         run: echo '${{ steps.readPackage.outputs.version }}'
       # requires checkout
