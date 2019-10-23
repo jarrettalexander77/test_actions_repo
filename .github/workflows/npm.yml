@@ -1,4 +1,4 @@
-name: Testing
+name: NPM Pipeline
 
 # Remember to detect on prerelease which is a subtype
 # TODO: change this to listen on specific branches
@@ -29,15 +29,15 @@ jobs:
         run: |
           echo "##[set-output name=version;]$(cat package.json | grep version | head -1 | awk -F ':' '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
           echo "##[set-output name=displayName;]$(cat package.json | grep displayName | head -1 | awk -F ':' '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
-      - name: install
-        id: install
-        run: npm install
-      - name: test
-        id: test
-        run: npm test
+      # - name: install
+      #   id: install
+      #   run: npm install
+      # - name: test
+      #   id: test
+      #   run: npm test
       - name: displayNameCheck
         id: displayNameCheck
-        uses: ./.github/actions/displayNameCheck
+        uses: .github/actions/displayNameCheck
         with:
           displayName: '${{ steps.readPackage.outputs.displayName }}'
       
