@@ -1,6 +1,7 @@
 {
   "name": "test_actions_repo",
   "version": "1.0.0",
+  "displayName": "test_actions_repo",
   "description": "Node App for testing actions",
   "main": "index.js",
   "scripts": {
