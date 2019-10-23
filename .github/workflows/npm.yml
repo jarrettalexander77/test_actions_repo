@@ -35,12 +35,12 @@ jobs:
       # - name: test
       #   id: test
       #   run: npm test
-      - run: ls ./.github/actions/displayNameCheck
-      # - name: displayNameCheck
-      #   id: displayNameCheck
-      #   uses: ./displayNameCheck
-      #   with:
-      #     displayName: '${{ steps.readPackage.outputs.displayName }}'
+      # - run: ls ./.github/actions/displayNameCheck
+      - name: displayNameCheck
+        id: displayNameCheck
+        uses: ./actions/displayNameCheck
+        with:
+          displayName: '${{ steps.readPackage.outputs.displayName }}'
       
       
 
