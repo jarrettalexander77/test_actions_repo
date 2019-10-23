@@ -35,7 +35,7 @@ jobs:
       # - name: test
       #   id: test
       #   run: npm test
-      - run: ls ./.github/actions/
+      - run: ls ./.github/actions/displayNameCheck
       # - name: displayNameCheck
       #   id: displayNameCheck
       #   uses: ./displayNameCheck
