@@ -26,23 +26,19 @@ jobs:
         run: |
           echo "##[set-output name=version;]$(cat package.json | grep version | head -1 | awk -F ':' '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
           echo "##[set-output name=displayName;]$(cat package.json | grep displayName | head -1 | awk -F ':' '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
-      - name: printVersion
-        run: |
-          echo '${{ steps.readPackage.outputs.version }}'
-          echo '${{ steps.readPackage.outputs.displayName }}'
-      # requires checkout
-      # - uses: READ_PACKAGE
-      # - run: cat package.json | grep version | head -1 | awk -F ':' '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'
+      - name: install
+        id: install
+        run: npm install
+      - name: test
+        id: test
+        run: npm test
       
-      # NPM Install Stage
-      # - run: npm install
       
       
 
       # - uses: DISPLAY_NAME_CHECK
       # - uses: VERSION_CHECK
       # - uses: OPEN_SOURCE_DEPENDENCY_CHECK
-      # - run: npm test
       # - uses: NPM_LINT
       # - uses: STATIC_SECURITY_CHECK
 
@@ -53,3 +49,7 @@ jobs:
       # - uses: POSTING_TO_SLACK
 
 
+      # - name: printVersion
+      #   run: |
+      #     echo '${{ steps.readPackage.outputs.version }}'
+      #     echo '${{ steps.readPackage.outputs.displayName }}'
