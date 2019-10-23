@@ -1,0 +1,11 @@
+name: 'Display Name Check'
+description: 'Check to ensure that the display name is not undefined'
+inputs:
+  displayName:
+    description: 'The display name to check against'
+    required: true
+outputs:
+  result:
+    description: 'The result of the display name existing'
+runs:
+  main: 'index.js'

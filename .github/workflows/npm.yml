@@ -1,7 +1,10 @@
 name: Testing
 
 # Remember to detect on prerelease which is a subtype
+# TODO: change this to listen on specific branches
 on: [push, pull_request, release]
+
+# TODO: Set up a node testing matrix
 
 # These are going to be our jenkins.yml file
 env:
@@ -32,7 +35,11 @@ jobs:
       - name: test
         id: test
         run: npm test
-      
+      - name: displayNameCheck
+        id: displayNameCheck
+        uses: ./.github/actions/displayNameCheck
+        with:
+          displayName: '${{ steps.readPackage.outputs.displayName }}'
       
       
 
