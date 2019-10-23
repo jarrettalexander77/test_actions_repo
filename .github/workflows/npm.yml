@@ -37,7 +37,7 @@ jobs:
       #   run: npm test
       - name: displayNameCheck
         id: displayNameCheck
-        uses: ./.github/actions/displayNameCheck
+        uses: ./displayNameCheck
         with:
           displayName: '${{ steps.readPackage.outputs.displayName }}'
       
