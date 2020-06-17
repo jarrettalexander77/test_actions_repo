@@ -13,6 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: custom action
+      id: hello
+      uses: jarrettalexander77/hello-world-docker-action@master
+      with:
+        who-to-greet: 'jarrett alexander' 
     - uses: actions/checkout@v2
     - name: Cache node modules
       uses: actions/cache@v2
