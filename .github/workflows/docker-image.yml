@@ -18,6 +18,8 @@ jobs:
       uses: jarrettalexander77/hello-world-docker-action@master
       with:
         who-to-greet: 'jarrett alexander' 
+    - name: print time
+      run: echo ${{ steps.hello.outputs.time }}
     - uses: actions/checkout@v2
     - name: Cache node modules
       uses: actions/cache@v2
